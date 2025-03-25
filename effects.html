@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Special Effects - Three.js Explorer</title>
+		<link rel="stylesheet" href="css/navbar.css">
+		<link rel="stylesheet" href="css/themes.css">
+		<style>
+			body { 
+				margin: 0; 
+				overflow-x: hidden;
+				background-color: var(--background-color);
+				font-family: Arial, sans-serif;
+				color: var(--text-color);
+			}
+			
+			/* Styles pour le contenu de la page */
+			.content {
+				padding: 70px 20px 20px;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.effects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 30px;
+				margin-top: 30px;
+				margin-bottom: 50px;
+			}
+			
+			.effect-card {
+				background-color: var(--card-bg-color);
+				border-radius: 10px;
+				overflow: hidden;
+				box-shadow: 0 5px 15px var(--shadow-color);
+				transition: all 0.3s ease;
+				position: relative;
+			}
+			
+			.effect-card:hover {
+				transform: translateY(-10px);
+				box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+			}
+			
+			.effect-preview {
+				height: 200px;
+				background-color: #333;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.effect-preview video, .effect-preview img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			
+			.effect-info {
+				padding: 20px;
+			}
+			
+			.effect-title {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 10px;
+			}
+			
+			.effect-title h3 {
+				margin: 0;
+				color: var(--primary-color);
+			}
+			
+			.complexity {
+				display: flex;
+				gap: 2px;
+			}
+			
+			.complexity-dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+				background-color: rgba(76, 175, 80, 0.3);
+			}
+			
+			.complexity-dot.active {
+				background-color: var(--primary-color);
+			}
+			
+			.effect-info p {
+				margin: 10px 0 15px;
+				font-size: 14px;
+				line-height: 1.5;
+				color: var(--secondary-text-color);
+			}
+			
+			.effect-tags {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 5px;
+				margin-top: 15px;
+			}
+			
+			.effect-tag {
+				background-color: rgba(76, 175, 80, 0.2);
+				color: var(--primary-color);
+				padding: 3px 8px;
+				border-radius: 4px;
+				font-size: 12px;
+			}
+			
+			.try-button {
+				display: inline-block;
+				padding: 8px 16px;
+				background-color: var(--primary-color);
+				color: white;
+				text-decoration: none;
+				border-radius: 4px;
+				transition: background-color 0.3s;
+				margin-top: 10px;
+			}
+			
+			.try-button:hover {
+				background-color: #3e8e41;
+			}
+				
+			/* Styles responsives pour les petits écrans */
+			@media (max-width: 768px) {
+				.effects-grid {
+					grid-template-columns: 1fr;
+				}
+				
+				.content {
+					padding-top: 60px;
+				}
+				
+				h1 {
+					font-size: 24px;
+				}
+				
+				.effect-info {
+					padding: 15px;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Barre de navigation -->
+		<nav class="navbar">
+			<a href="index.html" class="logo">
+				<span class="logo-icon">&#9733;</span> Three.js Explorer
+			</a>
+			
+			<!-- Menu hamburger pour mobile -->
+			<div class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			
+			<div class="navbar-links">
+				<a href="index.html">Home</a>
+				<a href="shapes.html">3D Shapes</a>
+				<a href="models.html">Models</a>
+				<a href="effects.html" class="active">Effects</a>
+				<a href="documentation.html">Docs</a>
+				<a href="about.html">About</a>
+			</div>
+		</nav>
+		
+		<!-- Contenu de la page -->
+		<div class="content">
+			<h1>Effets Spéciaux 3D</h1>
+			<p>Découvrez notre collection d'effets visuels et de techniques de rendu avancées réalisables avec Three.js. Chaque démo est interactive et contient du code source que vous pouvez explorer.</p>
+			
+			<div class="effects-grid">
+				<div class="effect-card">
+					<div class="effect-preview">
+						<img src="https://via.placeholder.com/300x200?text=Particles" alt="Particles Effect">
+					</div>
+					<div class="effect-info">
+						<div class="effect-title">
+							<h3>Système de Particules</h3>
+							<div class="complexity">
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot"></div>
+							</div>
+						</div>
+						<p>Créez des effets de particules dynamiques pour simuler la fumée, le feu, l'eau ou d'autres phénomènes naturels.</p>
+						<div class="effect-tags">
+							<span class="effect-tag">Particules</span>
+							<span class="effect-tag">Animation</span>
+							<span class="effect-tag">Physique</span>
+						</div>
+						<a href="#" class="try-button">Essayer la démo</a>
+					</div>
+				</div>
+				
+				<div class="effect-card">
+					<div class="effect-preview">
+						<img src="https://via.placeholder.com/300x200?text=PostProcessing" alt="Post-Processing Effects">
+					</div>
+					<div class="effect-info">
+						<div class="effect-title">
+							<h3>Post-Processing</h3>
+							<div class="complexity">
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+							</div>
+						</div>
+						<p>Appliquez des effets de post-traitement comme le flou, la correction des couleurs, le bloom et bien plus encore.</p>
+						<div class="effect-tags">
+							<span class="effect-tag">Shaders</span>
+							<span class="effect-tag">Filtres</span>
+							<span class="effect-tag">Visuel</span>
+						</div>
+						<a href="#" class="try-button">Essayer la démo</a>
+					</div>
+				</div>
+				
+				<div class="effect-card">
+					<div class="effect-preview">
+						<img src="https://via.placeholder.com/300x200?text=Reflections" alt="Reflections Effect">
+					</div>
+					<div class="effect-info">
+						<div class="effect-title">
+							<h3>Réflexions & Réfractions</h3>
+							<div class="complexity">
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+							</div>
+						</div>
+						<p>Créez des surfaces réfléchissantes et réfractives avec des cube maps ou des textures de réflexion dynamiques.</p>
+						<div class="effect-tags">
+							<span class="effect-tag">Matériaux</span>
+							<span class="effect-tag">PBR</span>
+							<span class="effect-tag">Environment</span>
+						</div>
+						<a href="#" class="try-button">Essayer la démo</a>
+					</div>
+				</div>
+				
+				<div class="effect-card">
+					<div class="effect-preview">
+						<img src="https://via.placeholder.com/300x200?text=Physics" alt="Physics Effect">
+					</div>
+					<div class="effect-info">
+						<div class="effect-title">
+							<h3>Physique & Collisions</h3>
+							<div class="complexity">
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+							</div>
+						</div>
+						<p>Intégrez un moteur de physique pour simuler des collisions réalistes et des comportements dynamiques.</p>
+						<div class="effect-tags">
+							<span class="effect-tag">Cannon.js</span>
+							<span class="effect-tag">Dynamique</span>
+							<span class="effect-tag">Interactif</span>
+						</div>
+						<a href="#" class="try-button">Essayer la démo</a>
+					</div>
+				</div>
+				
+				<div class="effect-card">
+					<div class="effect-preview">
+						<img src="https://via.placeholder.com/300x200?text=Animations" alt="Animation Effect">
+					</div>
+					<div class="effect-info">
+						<div class="effect-title">
+							<h3>Animations Avancées</h3>
+							<div class="complexity">
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot"></div>
+							</div>
+						</div>
+						<p>Apprenez à créer des animations fluides avec l'interpolation, le morphing et les squelettes.</p>
+						<div class="effect-tags">
+							<span class="effect-tag">Tweening</span>
+							<span class="effect-tag">Keyframes</span>
+							<span class="effect-tag">Animation</span>
+						</div>
+						<a href="#" class="try-button">Essayer la démo</a>
+					</div>
+				</div>
+				
+				<div class="effect-card">
+					<div class="effect-preview">
+						<img src="https://via.placeholder.com/300x200?text=Procedural" alt="Procedural Effect">
+					</div>
+					<div class="effect-info">
+						<div class="effect-title">
+							<h3>Génération Procédurale</h3>
+							<div class="complexity">
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+								<div class="complexity-dot active"></div>
+							</div>
+						</div>
+						<p>Créez des terrains, des textures et des objets générés de manière procédurale à l'aide d'algorithmes.</p>
+						<div class="effect-tags">
+							<span class="effect-tag">Noise</span>
+							<span class="effect-tag">Algorithmes</span>
+							<span class="effect-tag">Terrain</span>
+						</div>
+						<a href="#" class="try-button">Essayer la démo</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Script pour le menu mobile et le thème -->
+		<script src="js/navbar.js"></script>
+	</body>
+</html>

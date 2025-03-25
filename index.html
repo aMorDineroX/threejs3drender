@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Three.js 3D Scene with Shadows</title>
+		<link rel="stylesheet" href="css/navbar.css">
+		<link rel="stylesheet" href="css/themes.css">
+		<link rel="stylesheet" href="css/control-panel.css">
+		<style>
+			body { 
+				margin: 0; 
+				overflow: hidden;
+				background-color: var(--background-color);
+				font-family: Arial, sans-serif;
+				color: var(--text-color);
+			}
+			canvas {
+				display: block;
+			}
+			button:hover {
+				transform: scale(1.05);
+				transition: transform 0.2s;
+			}
+			button:active {
+				transform: scale(0.95);
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Barre de navigation -->
+		<nav class="navbar">
+			<a href="index.html" class="logo">
+				<span class="logo-icon">&#9733;</span> Three.js Explorer
+			</a>
+			
+			<!-- Theme toggle will be inserted here by navbar.js -->
+			
+			<!-- Menu hamburger pour mobile -->
+			<div class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			
+			<div class="navbar-links">
+				<a href="index.html" class="active">Home</a>
+				<a href="shapes.html">3D Shapes</a>
+				<a href="models.html">Models</a>
+				<a href="effects.html">Effects</a>
+				<a href="documentation.html">Docs</a>
+				<a href="about.html">About</a>
+			</div>
+		</nav>
+		
+		<!-- Conteneur pour les stats FPS -->
+		<div id="stats-container"></div>
+		
+		<script type="module" src="/main.js"></script>
+		
+		<!-- Script pour le menu mobile et le thème -->
+		<script src="js/navbar.js"></script>
+	</body>
+</html>

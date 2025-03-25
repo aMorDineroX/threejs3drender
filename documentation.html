@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentation - Three.js Explorer</title>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .main-content {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 70px 0 20px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 100;
+        }
+        
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .sidebar li a {
+            display: block;
+            padding: 10px 15px;
+            color: var(--secondary-text-color);
+            text-decoration: none;
+            border-left: 3px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .sidebar li a:hover,
+        .sidebar li a.active {
+            background-color: var(--hover-color);
+            border-left-color: var(--primary-color);
+            color: var(--text-color);
+        }
+        
+        .content {
+            flex: 1;
+            padding: 70px 30px 30px 280px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1, h2, h3 {
+            scroll-margin-top: 80px; /* Ensures headings aren't hidden behind navbar when scrolled to */
+        }
+        
+        code {
+            font-family: monospace;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        
+        pre {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .code-example {
+            margin: 20px 0;
+        }
+        
+        .toggle-sidebar {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 2000;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.2s ease;
+        }
+        
+        .toggle-sidebar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        }
+        
+        .toggle-sidebar:active {
+            transform: scale(0.95);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                left: -100%;
+                box-shadow: 5px 0 15px rgba(0, 0, 0, 0.3);
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .content {
+                padding: 70px 15px 15px 15px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .toggle-sidebar {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barre de navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo">
+            <span class="logo-icon">&#9733;</span> Three.js Explorer
+        </a>
+        
+        <!-- Theme toggle will be inserted here by navbar.js -->
+        
+        <!-- Menu hamburger pour mobile -->
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="navbar-links">
+            <a href="index.html">Home</a>
+            <a href="shapes.html">3D Shapes</a>
+            <a href="models.html">Models</a>
+            <a href="effects.html">Effects</a>
+            <a href="documentation.html" class="active">Docs</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+    
+    <div class="main-content">
+        <aside class="sidebar" id="sidebar">
+            <ul>
+                <li><a href="#introduction" class="active">Introduction</a></li>
+                <li><a href="#getting-started">Premiers pas</a></li>
+                <li><a href="#scene-setup">Configuration de la scène</a></li>
+                <li><a href="#camera">Caméra</a></li>
+                <li><a href="#lights">Éclairage</a></li>
+                <li><a href="#materials">Matériaux</a></li>
+                <li><a href="#geometries">Géométries</a></li>
+                <li><a href="#controls">Contrôles</a></li>
+                <li><a href="#shadows">Ombres</a></li>
+                <li><a href="#loading-models">Chargement des modèles</a></li>
+                <li><a href="#textures">Textures</a></li>
+                <li><a href="#animation">Animation</a></li>
+                <li><a href="#advanced">Fonctionnalités avancées</a></li>
+                <li><a href="#performance">Optimisation des performances</a></li>
+                <li><a href="#api-reference">Référence API</a></li>
+            </ul>
+        </aside>
+        
+        <main class="content" id="content">
+            <h1 id="introduction">Three.js Explorer - Documentation</h1>
+            <p>Bienvenue dans la documentation de Three.js Explorer. Cette plateforme vous permet d'explorer et d'apprendre les fondamentaux du rendu 3D dans le navigateur avec Three.js.</p>
+            
+            <h2 id="getting-started">Premiers pas</h2>
+            <p>Pour commencer à utiliser Three.js, vous devez comprendre quelques concepts de base :</p>
+            
+            <div class="code-example">
+                <h3>Structure de base d'une application Three.js</h3>
+                <pre><code>// 1. Créer une scène
+const scene = new THREE.Scene();
+
+// 2. Créer une caméra
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+// 3. Créer un renderer
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// 4. Ajouter des objets à la scène
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
+
+// 5. Animer la scène
+function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+}
+animate();</code></pre>
+            </div>
+            
+            <h2 id="scene-setup">Configuration de la scène</h2>
+            <p>La scène est le conteneur pour tous vos objets, lumières et caméras. C'est l'espace 3D dans lequel vous placez vos éléments.</p>
+            
+            <div class="code-example">
+                <h3>Exemple de configuration avancée d'une scène</h3>
+                <pre><code>// Création d'une scène avec une couleur de fond
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x2a2a2a);
+
+// Ajout d'un brouillard pour créer de la profondeur
+scene.fog = new THREE.Fog(0x2a2a2a, 10, 50);
+
+// Environnement HDR pour un éclairage réaliste
+const pmremGenerator = new THREE.PMREMGenerator(renderer);
+new RGBELoader()
+    .load('path/to/environment.hdr', function(texture) {
+        const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+        scene.environment = envMap;
+        texture.dispose();
+        pmremGenerator.dispose();
+    });</code></pre>
+            </div>
+            
+            <h2 id="camera">Caméra</h2>
+            <p>La caméra définit ce qui est visible dans votre rendu. Three.js propose plusieurs types de caméras, chacune avec ses propres caractéristiques.</p>
+            
+            <div class="code-example">
+                <h3>Types de caméras</h3>
+                <pre><code>// Caméra perspective (la plus courante)
+// FOV, aspect ratio, near plane, far plane
+const perspectiveCamera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+// Caméra orthographique (sans perspective)
+// left, right, top, bottom, near, far
+const orthoCamera = new THREE.OrthographicCamera(-10, 10, 10, -10, 0.1, 1000);</code></pre>
+            </div>
+            
+            <h2 id="lights">Éclairage</h2>
+            <p>L'éclairage est essentiel pour créer des scènes réalistes. Three.js fournit plusieurs types de lumières.</p>
+            
+            <div class="code-example">
+                <h3>Types de lumières</h3>
+                <pre><code>// Lumière ambiante - éclaire uniformément toute la scène
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+
+// Lumière directionnelle - simule la lumière du soleil
+const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+directionalLight.position.set(5, 10, 7.5);
+directionalLight.castShadow = true; // Permet de projeter des ombres
+scene.add(directionalLight);
+
+// Point light - émet de la lumière dans toutes les directions depuis un point
+const pointLight = new THREE.PointLight(0xff9000, 1, 100);
+pointLight.position.set(10, 10, 10);
+scene.add(pointLight);</code></pre>
+            </div>
+            
+            <h2 id="materials">Matériaux</h2>
+            <p>Les matériaux définissent l'apparence des objets dans votre scène.</p>
+            
+            <!-- Contenu supplémentaire de la documentation... -->
+            
+            <h2 id="api-reference">Référence API</h2>
+            <p>Pour une documentation complète de l'API, veuillez consulter la <a href="https://threejs.org/docs/" target="_blank">documentation officielle de Three.js</a>.</p>
+        </main>
+    </div>
+    
+    <!-- Button to toggle sidebar on mobile -->
+    <!-- Script pour le menu mobile et le thème -->
+    <script src="js/navbar.js"></script>
+    <script type="module">
+        import { initDocumentationSidebar } from './js/navigationUtils.js';
+        
+        // Initialize the documentation sidebar when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initDocumentationSidebar('sidebar', 'content', 'toggle-sidebar');
+        });
+    </script>
+</body>
+</html>

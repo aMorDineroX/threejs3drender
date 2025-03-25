@@ -1,0 +1,74 @@
+:root {
+    /* Theme: Default (Dark) */
+    --primary-color: #4CAF50;
+    --background-color: #2a2a2a;
+    --card-bg-color: rgba(255, 255, 255, 0.05);
+    --text-color: #ffffff;
+    --secondary-text-color: #cccccc;
+    --navbar-bg-color: rgba(20, 20, 20, 0.8);
+    --hover-color: rgba(255, 255, 255, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body.light-theme {
+    /* Theme: Light */
+    --primary-color: #2E7D32;
+    --background-color: #f5f5f5;
+    --card-bg-color: rgba(0, 0, 0, 0.03);
+    --text-color: #333333;
+    --secondary-text-color: #666666;
+    --navbar-bg-color: rgba(245, 245, 245, 0.9);
+    --hover-color: rgba(0, 0, 0, 0.05);
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body {
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.navbar {
+    background-color: var(--navbar-bg-color);
+}
+
+.navbar-links a {
+    color: var(--secondary-text-color);
+}
+
+.navbar-links a:hover {
+    background-color: var(--hover-color);
+    color: var(--text-color);
+}
+
+.navbar-links a.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Styles pour les cartes et autres éléments UI */
+.card {
+    background-color: var(--card-bg-color);
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+h1, h2, h3 {
+    color: var(--primary-color);
+}
+
+/* Responsive adjustments for themes */
+@media (max-width: 768px) {
+    :root {
+        --navbar-bg-color: rgba(20, 20, 20, 0.95); /* Darker navbar on mobile */
+        --shadow-color: rgba(0, 0, 0, 0.4); /* Stronger shadows on mobile */
+    }
+    
+    body.light-theme {
+        --navbar-bg-color: rgba(245, 245, 245, 0.95);
+        --shadow-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    .card {
+        box-shadow: 0 3px 6px var(--shadow-color);
+    }
+}

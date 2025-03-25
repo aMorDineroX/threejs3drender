@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>3D Models - Three.js Explorer</title>
+		<link rel="stylesheet" href="css/navbar.css">
+        <link rel="stylesheet" href="css/themes.css">
+		<style>
+			body { 
+				margin: 0; 
+				overflow: hidden;
+				background-color: var(--background-color);
+				font-family: Arial, sans-serif;
+				color: var(--text-color);
+			}
+			
+			/* Styles pour le contenu de la page */
+			.content {
+				padding: 70px 20px 20px;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.models-gallery {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 25px;
+				margin-top: 30px;
+			}
+			
+			.model-card {
+				background-color: var(--card-bg-color);
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 4px 12px var(--shadow-color);
+				transition: transform 0.3s ease;
+			}
+			
+			.model-card:hover {
+				transform: translateY(-5px);
+			}
+			
+			.model-preview {
+				height: 250px;
+				background-color: #333;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.model-preview img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			
+			.model-info {
+				padding: 20px;
+			}
+			
+			.model-info h3 {
+				margin-top: 0;
+				margin-bottom: 10px;
+				color: var(--primary-color);
+			}
+			
+			.model-format {
+				display: inline-block;
+				background-color: rgba(76, 175, 80, 0.2);
+				color: var(--primary-color);
+				padding: 3px 8px;
+				border-radius: 4px;
+				margin-bottom: 10px;
+				font-size: 12px;
+				text-transform: uppercase;
+			}
+			
+			.model-info p {
+				margin: 10px 0 0;
+				font-size: 14px;
+				line-height: 1.5;
+				color: var(--secondary-text-color);
+			}
+			
+			.view-button {
+				margin-top: 15px;
+				display: inline-block;
+				padding: 8px 16px;
+				background-color: var(--primary-color);
+				color: white;
+				text-decoration: none;
+				border-radius: 4px;
+				transition: background-color 0.3s;
+			}
+			
+			.view-button:hover {
+				background-color: #3e8e41;
+				}
+				
+				/* Styles responsives pour les petits écrans */
+				@media (max-width: 768px) {
+					.models-gallery {
+						grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+						gap: 15px;
+					}
+					
+					.content {
+						padding-top: 60px;
+                        padding-left: 10px;
+                        padding-right: 10px;
+					}
+					
+					h1 {
+						font-size: 24px;
+                        margin-bottom: 15px;
+					}
+					
+					.model-preview {
+						height: 200px;
+					}
+                    
+                    .model-info {
+                        padding: 15px;
+                    }
+                    
+                    .view-button {
+                        display: block;
+                        text-align: center;
+                        margin-top: 10px;
+                    }
+				}
+                
+                @media (max-width: 480px) {
+                    .models-gallery {
+                        grid-template-columns: 1fr;
+                    }
+                    
+                    .model-preview {
+                        height: 180px;
+                    }
+                }
+		</style>
+	</head>
+	<body>
+		<!-- Barre de navigation -->
+		<nav class="navbar">
+			<a href="index.html" class="logo">
+				<span class="logo-icon">&#9733;</span> Three.js Explorer
+			</a>
+			
+			<!-- Menu hamburger pour mobile -->
+			<div class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			
+			<div class="navbar-links">
+				<a href="index.html">Home</a>
+				<a href="shapes.html">3D Shapes</a>
+				<a href="models.html" class="active">Models</a>
+				<a href="effects.html">Effects</a>
+				<a href="about.html">About</a>
+			</div>
+		</nav>
+		
+		<!-- Contenu de la page -->
+		<div class="content">
+			<h1>3D Models Gallery</h1>
+			<p>Explorez notre collection de modèles 3D. Vous pouvez visualiser ces modèles en détail et les manipuler en temps réel.</p>
+			
+			<div class="models-gallery">
+				<div class="model-card">
+					<div class="model-preview">
+						<img src="https://via.placeholder.com/350x250?text=Robot" alt="Robot 3D Model">
+					</div>
+					<div class="model-info">
+						<span class="model-format">GLTF / GLB</span>
+						<h3>Robot Assistant</h3>
+						<p>Un modèle détaillé d'un robot assistant avec des articulations entièrement animables.</p>
+						<a href="#" class="view-button">Voir en 3D</a>
+					</div>
+				</div>
+				
+				<div class="model-card">
+					<div class="model-preview">
+						<img src="https://via.placeholder.com/350x250?text=Spaceship" alt="Spaceship 3D Model">
+					</div>
+					<div class="model-info">
+						<span class="model-format">GLTF / GLB</span>
+						<h3>Vaisseau Spatial</h3>
+						<p>Un vaisseau spatial futuriste avec des détails intérieurs et extérieurs.</p>
+						<a href="#" class="view-button">Voir en 3D</a>
+					</div>
+				</div>
+				
+				<div class="model-card">
+					<div class="model-preview">
+						<img src="https://via.placeholder.com/350x250?text=Car" alt="Car 3D Model">
+					</div>
+					<div class="model-info">
+						<span class="model-format">GLTF / GLB</span>
+						<h3>Voiture Sport</h3>
+						<p>Modèle haute fidélité d'une voiture de sport avec intérieur détaillé et roues animées.</p>
+						<a href="#" class="view-button">Voir en 3D</a>
+					</div>
+				</div>
+				
+				<div class="model-card">
+					<div class="model-preview">
+						<img src="https://via.placeholder.com/350x250?text=Character" alt="Character 3D Model">
+					</div>
+					<div class="model-info">
+						<span class="model-format">GLTF / GLB</span>
+						<h3>Personnage Humanoïde</h3>
+						<p>Un personnage humanoïde entièrement riggé et animé, prêt pour des jeux ou des applications.</p>
+						<a href="#" class="view-button">Voir en 3D</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Script pour le menu mobile et le thème -->
+		<script src="js/navbar.js"></script>
+	</body>
+</html>

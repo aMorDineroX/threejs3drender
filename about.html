@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>About - Three.js Explorer</title>
+		<link rel="stylesheet" href="css/navbar.css">
+		<style>
+			body { 
+				margin: 0; 
+				font-family: Arial, sans-serif;
+				color: white;
+				background-color: #2a2a2a;
+				line-height: 1.6;
+			}
+			
+			/* Styles pour le contenu de la page */
+			.content {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 100px 20px 50px;
+			}
+			
+			.content h1 {
+				color: #4CAF50;
+				margin-bottom: 30px;
+				border-bottom: 2px solid #4CAF50;
+				padding-bottom: 10px;
+			}
+			
+			.content p {
+				margin-bottom: 20px;
+			}
+			
+			.content h2 {
+				color: #4CAF50;
+				margin: 30px 0 15px;
+			}
+			
+			.tech-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+				gap: 15px;
+				margin: 20px 0;
+			}
+			
+			.tech-item {
+				background-color: rgba(255, 255, 255, 0.05);
+				padding: 15px;
+				border-radius: 8px;
+				text-align: center;
+				transition: transform 0.2s;
+			}
+			
+			.tech-item:hover {
+				transform: translateY(-5px);
+				background-color: rgba(255, 255, 255, 0.1);
+			}
+			
+			.tech-icon {
+				font-size: 32px;
+				margin-bottom: 10px;
+				color: #4CAF50;
+			}
+			
+			.contact-info {
+				background-color: rgba(255, 255, 255, 0.05);
+				padding: 20px;
+				border-radius: 8px;
+				margin-top: 30px;
+			}
+			
+			.contact-info a {
+				color: #4CAF50;
+				text-decoration: none;
+			}
+			
+			.contact-info a:hover {
+				text-decoration: underline;
+				}
+				
+			/* Styles responsives pour les petits écrans */
+			@media (max-width: 768px) {
+				.content {
+					padding-top: 70px;
+					padding-left: 15px;
+					padding-right: 15px;
+				}
+				
+				h1 {
+					font-size: 24px;
+				}
+				
+				.tech-grid {
+					grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- Barre de navigation -->
+		<nav class="navbar">
+			<a href="index.html" class="logo">
+				<span class="logo-icon">&#9733;</span> Three.js Explorer
+			</a>
+			
+			<!-- Menu hamburger pour mobile -->
+			<div class="menu-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+			
+			<div class="navbar-links">
+				<a href="index.html">Home</a>
+				<a href="shapes.html">3D Shapes</a>
+				<a href="models.html">Models</a>
+				<a href="effects.html">Effects</a>
+				<a href="about.html" class="active">About</a>
+			</div>
+		</nav>
+		
+		<!-- Contenu de la page -->
+		<div class="content">
+			<h1>À propos de Three.js Explorer</h1>
+			
+			<p>Three.js Explorer est une plateforme pédagogique destinée à explorer les capacités de la bibliothèque Three.js pour le rendu 3D dans les navigateurs web. Ce projet a été créé pour démontrer les fonctionnalités et possibilités du rendu WebGL via l'API Three.js.</p>
+			
+			<h2>Notre mission</h2>
+			<p>Notre objectif est de fournir une ressource interactive pour apprendre et expérimenter avec les graphiques 3D sur le web. Que vous soyez débutant ou développeur expérimenté, notre plateforme vous permet d'explorer les fondamentaux de la 3D à travers des exemples concrets et personnalisables.</p>
+			
+			<h2>Technologies utilisées</h2>
+			<div class="tech-grid">
+				<div class="tech-item">
+					<div class="tech-icon">&#128187;</div>
+					<div>Three.js</div>
+				</div>
+				<div class="tech-item">
+					<div class="tech-icon">&#127912;</div>
+					<div>WebGL</div>
+				</div>
+				<div class="tech-item">
+					<div class="tech-icon">&#128736;</div>
+					<div>JavaScript</div>
+				</div>
+				<div class="tech-item">
+					<div class="tech-icon">&#127760;</div>
+					<div>HTML5</div>
+				</div>
+				<div class="tech-item">
+					<div class="tech-icon">&#127748;</div>
+					<div>CSS3</div>
+				</div>
+				<div class="tech-item">
+					<div class="tech-icon">&#128202;</div>
+					<div>Vite</div>
+				</div>
+			</div>
+			
+			<h2>Fonctionnalités</h2>
+			<ul>
+				<li>Rendu 3D en temps réel</li>
+				<li>Contrôles de caméra intuitifs</li>
+				<li>Exemples de formes 3D basiques</li>
+				<li>Chargement de modèles 3D complexes</li>
+				<li>Éclairage et ombres réalistes</li>
+				<li>Interface utilisateur responsive</li>
+				<li>Navigation entre différentes démos</li>
+			</ul>
+			
+			<div class="contact-info">
+				<h2>Contact</h2>
+				<p>Pour toute question ou suggestion concernant cette démo Three.js, n'hésitez pas à nous contacter :</p>
+				<p>Email: <a href="mailto:contact@example.com">contact@example.com</a></p>
+				<p>GitHub: <a href="https://github.com/username/threejs3drender" target="_blank">github.com/username/threejs3drender</a></p>
+			</div>
+		</div>
+		
+		<!-- Script pour le menu mobile -->
+		<script src="js/navbar.js"></script>
+	</body>
+</html>

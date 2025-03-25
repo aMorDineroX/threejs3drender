@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>3D Shapes Gallery - Three.js Explorer</title>
+		<link rel="stylesheet" href="css/navbar.css">
+		<style>
+			body { 
+				margin: 0; 
+				overflow: hidden;
+				background-color: #2a2a2a;
+				font-family: Arial, sans-serif;
+				color: white;
+			}
+			
+			/* Styles pour le contenu de la page */
+			.content {
+				padding: 70px 20px 20px;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
+			
+			.gallery {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 20px;
+				margin-top: 20px;
+			}
+			
+			.shape-card {
+				background-color: rgba(255, 255, 255, 0.05);
+				border-radius: 8px;
+				overflow: hidden;
+				box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+				transition: transform 0.3s ease;
+			}
+			
+			.shape-card:hover {
+				transform: translateY(-5px);
+			}
+			
+			.shape-image {
+				height: 200px;
+				background-color: #333;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			
+			.shape-image img {
+				max-width: 90%;
+				max-height: 90%;
+			}
+			
+			.shape-info {
+				padding: 15px;
+			}
+			
+			.shape-info h3 {
+				margin-top: 0;
+				margin-bottom: 10px;
+				color: #4CAF50;
+			}
+			
+			.shape-info p {
+				margin: 0;
+				font-size: 14px;
+				line-height: 1.5;
+				}
+				
+				/* Styles responsives pour les petits écrans */
+				@media (max-width: 768px) {
+					.gallery {
+						grid-template-columns: 1fr;
+					}
+					
+					.content {
+						padding-top: 60px;
+					}
+					
+					h1 {
+						font-size: 24px;
+					}
+				}
+			</style>
+		</head>
+		<body>
+			<!-- Barre de navigation -->
+			<nav class="navbar">
+				<a href="index.html" class="logo">
+					<span class="logo-icon">&#9733;</span> Three.js Explorer
+				</a>
+				
+				<!-- Menu hamburger pour mobile -->
+				<div class="menu-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				
+				<div class="navbar-links">
+					<a href="index.html">Home</a>
+					<a href="shapes.html" class="active">3D Shapes</a>
+					<a href="models.html">Models</a>
+					<a href="effects.html">Effects</a>
+					<a href="about.html">About</a>
+				</div>
+			</nav>
+			
+			<!-- Contenu de la page -->
+			<div class="content">
+				<h1>3D Shapes Gallery</h1>
+				<p>Explorez différentes formes géométriques 3D créées avec Three.js. Cliquez sur une forme pour voir son rendu interactif.</p>
+				
+				<div class="gallery">
+					<div class="shape-card">
+						<div class="shape-image">
+							<img src="https://via.placeholder.com/150?text=Cube" alt="Cube">
+						</div>
+						<div class="shape-info">
+							<h3>Cube</h3>
+							<p>Un cube simple avec 6 faces, 8 sommets et 12 arêtes. Utilisez BoxGeometry pour créer cette forme.</p>
+						</div>
+					</div>
+					
+					<div class="shape-card">
+						<div class="shape-image">
+							<img src="https://via.placeholder.com/150?text=Sphere" alt="Sphere">
+						</div>
+						<div class="shape-info">
+							<h3>Sphère</h3>
+							<p>Une sphère parfaite. Utilisez SphereGeometry avec un nombre élevé de segments pour une apparence lisse.</p>
+						</div>
+					</div>
+					
+					<div class="shape-card">
+						<div class="shape-image">
+							<img src="https://via.placeholder.com/150?text=Torus" alt="Torus">
+						</div>
+						<div class="shape-info">
+							<h3>Tore</h3>
+							<p>Un tore (forme de donut). Utilisez TorusGeometry et ajustez les rayons pour changer son apparence.</p>
+						</div>
+					</div>
+					
+					<div class="shape-card">
+						<div class="shape-image">
+							<img src="https://via.placeholder.com/150?text=Cylinder" alt="Cylinder">
+						</div>
+						<div class="shape-info">
+							<h3>Cylindre</h3>
+							<p>Un cylindre simple. Utilisez CylinderGeometry et ajustez les rayons supérieur et inférieur.</p>
+						</div>
+					</div>
+					
+					<div class="shape-card">
+						<div class="shape-image">
+							<img src="https://via.placeholder.com/150?text=Cone" alt="Cone">
+						</div>
+						<div class="shape-info">
+							<h3>Cône</h3>
+							<p>Un cône est un cylindre avec un rayon supérieur de 0. Utilisez CylinderGeometry avec radiusTop = 0.</p>
+						</div>
+					</div>
+					
+					<div class="shape-card">
+						<div class="shape-image">
+							<img src="https://via.placeholder.com/150?text=Tetrahedron" alt="Tetrahedron">
+						</div>
+						<div class="shape-info">
+							<h3>Tétraèdre</h3>
+							<p>Un tétraèdre est un polyèdre avec 4 faces triangulaires. Utilisez TetrahedronGeometry.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!-- Script pour le menu mobile -->
+			<script src="js/navbar.js"></script>
+		</body>
+	</html>
